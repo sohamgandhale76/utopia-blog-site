@@ -7,3 +7,9 @@ desktop.ini
 .vscode/
 .idea/
 *.swp
+
+# Netlify & Environment
+.netlify/
+*.local
+cookies.txt
+
