@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utopia</title>
+  <meta name="description" content="Spatial computing interface exploration for Utopia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Fredoka:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="src/styles/glass.css">
+</head>
+
+<body>
+
+  <!-- Adaptive Spatial Viewport -->
+  <div class="adaptive-viewport" id="viewport">
+
+    <!-- Environment Backdrop (Living Wallpaper) -->
+    <div class="environment-backdrop" aria-hidden="true"></div>
+
+    <!-- Foreground Floating Glass Stage -->
+    <main class="glass-stage">
+      <!-- VisionOS Frosted Glass Panel Container -->
+      <section class="spatial-glass-panel" id="glass-canvas" aria-label="Spatial workspace">
+
+        <!-- Shared SVG Defs -->
+        <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+          <defs>
+            <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffd56b" />
+              <stop offset="35%" stop-color="#ff5c8a" />
+              <stop offset="70%" stop-color="#705cff" />
+              <stop offset="100%" stop-color="#00d2ff" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- Glass Navigation Header (Single Row: Nav Stories + Center Logo + Actions) -->
+        <header class="glass-header">
+          <!-- Left: Channels Nav Stories Track (3 Accounts from pfp) -->
+          <nav class="nav-stories-track" id="nav-track" aria-label="Content Navigation">
+            <a href="#stuti" class="nav-story-item active" data-target="stuti">
+              <div class="story-avatar-wrap">
+                <img src="pfp/pfp1.jpeg" alt="Stuti"
+                  class="story-img story-pfp-1">
+                <span class="live-status-dot online"></span>
+              </div>
+              <span class="story-label">Stuti</span>
+            </a>
+
+            <a href="#adi" class="nav-story-item" data-target="adi">
+              <div class="story-avatar-wrap">
+                <img src="pfp/pfp2.jpeg" alt="Adi"
+                  class="story-img story-pfp-2">
+                <span class="live-status-dot online"></span>
+              </div>
+              <span class="story-label">Adi</span>
+            </a>
+
+            <a href="#neo" class="nav-story-item" data-target="neo">
+              <div class="story-avatar-wrap">
+                <img src="pfp/pfp3.jpeg" alt="Neo"
+                  class="story-img story-pfp-3">
+                <span class="live-status-dot purple"></span>
+              </div>
+              <span class="story-label">Neo</span>
+            </a>
+          </nav>
+
+          <!-- Middle: Rotated Utopia Brand Logo -->
+          <div class="nav-brand-center">
+            <a href="#stuti" class="logo-link" aria-label="Utopia Home">
+              <img src="assets/utopia_logo.png" alt="Utopia Logo" class="nav-center-logo">
+            </a>
+          </div>
+
+          <!-- Right: Action Buttons -->
+          <div class="top-actions">
+            <button class="icon-btn" aria-label="Search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+            <button class="icon-btn notif-btn" aria-label="Notifications">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="notif-badge"></span>
+            </button>
+            <div class="user-avatar-pill">
+              <img src="pfp/pfp3.jpeg" alt="User Profile" class="avatar-img">
+            </div>
+          </div>
+        </header>
+
+        <!-- Scrollable Body Content for Jumping Across Sections -->
+        <div class="glass-scroll-content" id="glass-content">
+
+          <!-- SECTION 1: Stuti's Post (Community & Privacy) -->
+          <article id="stuti" class="content-section thread-post-card">
+            <div class="thread-gutter">
+              <img src="pfp/pfp1.jpeg" alt="Stuti" class="thread-author-avatar story-pfp-1">
+            </div>
+            <div class="thread-main">
+              <div class="thread-header-row">
+                <div class="thread-user-info">
+                  <span class="thread-author-name">Stuti</span>
+                  <span class="thread-handle">@stuti</span>
+                  <span class="thread-dot">•</span>
+                  <span class="thread-badge">Community & Privacy</span>
+                </div>
+                <div class="thread-meta-actions">
+                  <span class="thread-timestamp">4h</span>
+                  <button class="thread-more-btn" aria-label="More options">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <circle cx="5" cy="12" r="2"></circle>
+                      <circle cx="12" cy="12" r="2"></circle>
+                      <circle cx="19" cy="12" r="2"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="thread-text-content">
+                <p>Identity is not the same thing as identity proof.</p>
+                <p>Most social platforms ask you to build a recognizable identity: your name, your face, your followers, your history, your activity. Over time, that identity becomes the product.</p>
+                <p>Utopia takes a different approach. Here, you can participate without having to turn your real-world identity into your social identity. A pseudonym can be enough.</p>
+                <p>Be yourself without fear. You should be able to build a reputation through what you contribute — not through how much of your personal life you reveal.</p>
+                <p>Utopia is pseudonymous by design. People shouldn't have to attach their real-world identity to every opinion, interest, or conversation. The goal is to give people room to express themselves honestly while still maintaining accountability through community rules and moderation.</p>
+                <p>That doesn't mean anonymity without consequences. Utopia is designed around pseudonymity with accountability:</p>
+                <div class="post-bullet-group">
+                  <div class="post-bullet-line"><span class="bullet-dash">—</span> Communities can have moderators</div>
+                  <div class="post-bullet-line"><span class="bullet-dash">—</span> Rules can be enforced</div>
+                  <div class="post-bullet-line"><span class="bullet-dash">—</span> Abuse can be reported</div>
+                  <div class="post-bullet-line"><span class="bullet-dash">—</span> Sanctions can be applied</div>
+                </div>
+                <p>Privacy isn't a feature we add later or a setting buried in a menu. It affects how the system is designed from the beginning. Member lists can remain hidden. Participation is scoped to communities. Sessions are protected.</p>
+                <p>Utopia is centered around communities and conversations rather than follower counts, popularity contests, and personal branding.</p>
+                <p>We want to keep that boundary. You shouldn't have to reveal your life to have a voice.</p>
+                <div class="post-tags-inline">
+                  <span>#pseudonymity</span>
+                  <span>#privacy</span>
+                  <span>#accountability</span>
+                  <span>#communities</span>
+                </div>
+              </div>
+
+              <div class="thread-actions-bar">
+                <button class="thread-action-btn like-btn" aria-label="Like" title="Like">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                  <span class="action-count">942</span>
+                </button>
+                <button class="thread-action-btn comment-btn" aria-label="Comment" title="Comment">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                  </svg>
+                  <span class="action-count">78</span>
+                </button>
+                <button class="thread-action-btn repost-btn" aria-label="Repost" title="Repost">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 1l4 4-4 4"></path>
+                    <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                    <path d="M7 23l-4-4 4-4"></path>
+                    <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                  </svg>
+                  <span class="action-count">45</span>
+                </button>
+                <button class="thread-action-btn share-btn" aria-label="Share" title="Share">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+              </div>
+
+              <div class="thread-replies-row">
+                <span class="thread-replies-text">Liked by Adi, Neo, and 942 others</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- SECTION 2: Adi's Post (Systems & Human Interface) -->
+          <article id="adi" class="content-section thread-post-card">
+            <div class="thread-gutter">
+              <img src="pfp/pfp2.jpeg" alt="Adi" class="thread-author-avatar story-pfp-2">
+            </div>
+            <div class="thread-main">
+              <div class="thread-header-row">
+                <div class="thread-user-info">
+                  <span class="thread-author-name">Adi</span>
+                  <span class="thread-handle">@adi</span>
+                  <span class="thread-dot">•</span>
+                  <span class="thread-badge">Systems</span>
+                </div>
+                <div class="thread-meta-actions">
+                  <span class="thread-timestamp">2h</span>
+                  <button class="thread-more-btn" aria-label="More options">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <circle cx="5" cy="12" r="2"></circle>
+                      <circle cx="12" cy="12" r="2"></circle>
+                      <circle cx="19" cy="12" r="2"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="thread-text-content">
+                <p>Utopia is a social media platform that doesn't beg for your attention.</p>
+                <p>It isn't designed to keep you scrolling for hours, maximize engagement, or constantly sell you something.</p>
+                <p>Utopia is built around a simple idea: <strong>Social media should serve people, not exploit them.</strong></p>
+                <p>The platform should help people find communities they genuinely care about, express themselves freely, discover things that are actually relevant to them, and leave when they're done.</p>
+                <p>What makes Utopia different:</p>
+                <p class="post-point"><strong>No attention manipulation.</strong> We don't want dark patterns, addictive interaction loops, endless notifications, or interfaces designed purely to keep people online.</p>
+                <p class="post-point"><strong>An algorithm that works for you.</strong> Recommendations should prioritize relevance and usefulness over engagement at any cost. We want to help users find things they actually care about — not show whatever is most likely to keep them scrolling.</p>
+                <p>How Utopia should feel:</p>
+                <div class="post-bullet-group">
+                  <div class="post-bullet-line"><span class="bullet-dash">—</span> <strong>Calm</strong>, not chaotic</div>
+                  <div class="post-bullet-line"><span class="bullet-dash">—</span> <strong>Human</strong>, not corporate</div>
+                  <div class="post-bullet-line"><span class="bullet-dash">—</span> <strong>Simple</strong>, not empty</div>
+                  <div class="post-bullet-line"><span class="bullet-dash">—</span> <strong>Expressive</strong>, not attention-seeking</div>
+                  <div class="post-bullet-line"><span class="bullet-dash">—</span> <strong>Private</strong>, not secretive</div>
+                  <div class="post-bullet-line"><span class="bullet-dash">—</span> <strong>Community-driven</strong>, not popularity-driven</div>
+                  <div class="post-bullet-line"><span class="bullet-dash">—</span> <strong>Intentional</strong>, not addictive</div>
+                </div>
+                <p><strong>The frictionless exit:</strong> A user should be able to open Utopia, find something meaningful, participate in a conversation, and close the app without feeling like the product is trying to pull them back in.</p>
+                <p>Don't design Utopia to look like an existing social network with a different color palette. The interaction model itself should reflect the philosophy.</p>
+                <div class="post-tags-inline">
+                  <span>#calmtech</span>
+                  <span>#humaninterface</span>
+                  <span>#systems</span>
+                  <span>#utopia</span>
+                </div>
+              </div>
+
+              <div class="thread-actions-bar">
+                <button class="thread-action-btn like-btn" aria-label="Like" title="Like">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                  <span class="action-count">1.8k</span>
+                </button>
+                <button class="thread-action-btn comment-btn" aria-label="Comment" title="Comment">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                  </svg>
+                  <span class="action-count">142</span>
+                </button>
+                <button class="thread-action-btn repost-btn" aria-label="Repost" title="Repost">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 1l4 4-4 4"></path>
+                    <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                    <path d="M7 23l-4-4 4-4"></path>
+                    <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                  </svg>
+                  <span class="action-count">88</span>
+                </button>
+                <button class="thread-action-btn share-btn" aria-label="Share" title="Share">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+              </div>
+
+              <div class="thread-replies-row">
+                <span class="thread-replies-text">Liked by Stuti, Neo, and 1,842 others</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- SECTION 3: Neo's Post (Design Director) -->
+          <article id="neo" class="content-section thread-post-card">
+            <div class="thread-gutter">
+              <img src="pfp/pfp3.jpeg" alt="Neo" class="thread-author-avatar story-pfp-3">
+            </div>
+            <div class="thread-main">
+              <div class="thread-header-row">
+                <div class="thread-user-info">
+                  <span class="thread-author-name">Neo</span>
+                  <span class="thread-handle">@neo</span>
+                  <span class="thread-dot">•</span>
+                  <span class="thread-badge">Design Director</span>
+                </div>
+                <div class="thread-meta-actions">
+                  <span class="thread-timestamp">55m</span>
+                  <button class="thread-more-btn" aria-label="More options">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <circle cx="5" cy="12" r="2"></circle>
+                      <circle cx="12" cy="12" r="2"></circle>
+                      <circle cx="19" cy="12" r="2"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="thread-text-content">
+                <p>Utopia is built around a simple idea: your digital spaces should belong to you.</p>
+                <p>Not to an algorithm. Not to an engagement dashboard. Not to a company deciding what you should see, how you should behave, or who you should become.</p>
+                <p>We imagine communities that feel more like spaces than feeds. Places where people can gather around shared interests, create their own culture, and decide what belongs there.</p>
+                <p>Imagine opening Utopia and finding a space that feels unmistakably yours. The way you arrange things. The way it moves. The tools you choose. Like configuring a desktop environment — except the environment is social.</p>
+                <p>Some people might want something minimal. Some might want something chaotic. Some might build something completely unfamiliar. That freedom is the point.</p>
+                <p><strong>The core principle:</strong> Every UI decision should answer one question: <em>Does this make Utopia more useful to the person using it, or does it merely make them stay longer?</em></p>
+                <p>If something increases engagement but makes the experience worse for the user, we choose the user.</p>
+                <p>We're building the foundation first: pseudonymous identity, communities, moderation, accountability, privacy, and user control. Then we'll see where the community takes it.</p>
+                <div class="post-tags-inline">
+                  <span>#design</span>
+                  <span>#digitalspaces</span>
+                  <span>#calmtech</span>
+                  <span>#futureofsocial</span>
+                </div>
+              </div>
+
+              <div class="thread-actions-bar">
+                <button class="thread-action-btn like-btn" aria-label="Like" title="Like">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                  <span class="action-count">2.4k</span>
+                </button>
+                <button class="thread-action-btn comment-btn" aria-label="Comment" title="Comment">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                  </svg>
+                  <span class="action-count">318</span>
+                </button>
+                <button class="thread-action-btn repost-btn" aria-label="Repost" title="Repost">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 1l4 4-4 4"></path>
+                    <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                    <path d="M7 23l-4-4 4-4"></path>
+                    <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                  </svg>
+                  <span class="action-count">412</span>
+                </button>
+                <button class="thread-action-btn share-btn" aria-label="Share" title="Share">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+              </div>
+
+              <div class="thread-replies-row">
+                <span class="thread-replies-text">Liked by Stuti, Adi, and 2,410 others</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- SECTION 4: Creator Profile -->
+          <section id="profile-section" class="content-section profile-card-wrapper">
+            <div class="creator-profile-card">
+              <div class="profile-header-row">
+                <div class="profile-title-block">
+                  <h2 class="profile-name">Neo</h2>
+                  <span class="profile-handle">@neo • Design Director</span>
+                </div>
+                <div class="profile-quick-actions">
+                  <button class="profile-badge-btn" aria-label="Favorite">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="url(#starGrad)">
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  </button>
+                  <button class="profile-badge-btn" aria-label="Message">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <p class="profile-bio">
+                Building Utopia alongside @stuti and @adi — where digital spaces belong to people, not algorithms. Focusing on pseudonymous identity, calm interaction models, and social environments.
+              </p>
+
+              <div class="profile-stats-grid">
+                <div class="stat-item">
+                  <span class="stat-number">3</span>
+                  <span class="stat-label">Architects</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">3</span>
+                  <span class="stat-label">Manifestos</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">100%</span>
+                  <span class="stat-label">User-Owned</span>
+                </div>
+              </div>
+
+              <div class="tag-chips-row">
+                <span class="tag-chip">@utopia</span>
+                <span class="tag-chip">@stuti</span>
+                <span class="tag-chip">@adi</span>
+                <span class="tag-chip">@neo</span>
+                <span class="tag-chip">@pseudonymity</span>
+                <span class="tag-chip">@calmtech</span>
+                <span class="tag-chip">@spaces</span>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+
+
+      </section>
+    </main>
+
+  </div>
+
+  <script src="src/main.js"></script>
+</body>
+
+</html>
